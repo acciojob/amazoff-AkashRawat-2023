@@ -1,6 +1,8 @@
 package com.driver;
 
 import io.swagger.models.auth.In;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -9,7 +11,8 @@ import java.util.List;
 @Service
 public class OrderService {
 
-    OrderRepository orderRepository = new OrderRepository();
+    @Autowired
+    OrderRepository orderRepository;// = new OrderRepository();
     public String addOrder(Order order){
 
         return orderRepository.addOrder((order));
