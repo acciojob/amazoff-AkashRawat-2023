@@ -29,7 +29,7 @@ public class OrderRepository {
 
         HashSet<String> hs = partnerOrderDb.get(partnerId);
 
-        if(hs.isEmpty()){
+        if(hs == null){
             hs = new HashSet<>();
         }
 
@@ -45,16 +45,20 @@ public class OrderRepository {
     }
 
     public Integer getOrderCountByPartnerId(String partnerId){
-
-        HashSet<String> ans = partnerOrderDb.get(partnerId);
-        return ans.size();
-
+        HashSet<String> hs = partnerOrderDb.get(partnerId);
+        if (hs == null) {
+            return 0;
+        } else {
+            return hs.size();
+        }
     }
     public List<String> getOrdersByPartnerId(String partnerId){
         HashSet<String> hs = partnerOrderDb.get(partnerId);
         List<String> ans = new ArrayList<>();
-        for(String s : hs){
-            ans.add(s);
+        if (hs != null) {
+            for (String s : hs) {
+                ans.add(s);
+            }
         }
         return ans;
     }

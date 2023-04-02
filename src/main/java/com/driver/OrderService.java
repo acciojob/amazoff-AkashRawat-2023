@@ -11,8 +11,8 @@ import java.util.List;
 @Service
 public class OrderService {
 
-    @Autowired
-    OrderRepository orderRepository;// = new OrderRepository();
+    //@Autowired
+    OrderRepository orderRepository = new OrderRepository();
     public String addOrder(Order order){
 
         return orderRepository.addOrder((order));
